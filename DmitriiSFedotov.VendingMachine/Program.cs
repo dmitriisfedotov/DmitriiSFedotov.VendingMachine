@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DmitriiSFedotov.VendingMachine;
+﻿namespace DmitriiSFedotov.VendingMachine;
 
 internal class Program
 {
