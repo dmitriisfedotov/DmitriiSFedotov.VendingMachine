@@ -19,7 +19,7 @@ internal class Program
                 Console.WriteLine($"{i + 1}. {productNames[i]} - {productPrices[i]}");
             }
 
-            int selectedIndex = ReadFromConsole("Выберите товар: ") - 1;
+            int selectedIndex = ReadFromConsole("\nВыберите товар: ") - 1;
 
             if (selectedIndex < 0 || selectedIndex > productNames.Length - 1)
             {
@@ -56,7 +56,7 @@ internal class Program
 
                 if (!allowedBanknotes.Contains(money))   // метод Contains проверяет содержит ли коллекция элемент
                 {
-                    Console.WriteLine("Купюра не распознана! Внесите другую!");
+                    Console.WriteLine("\nКупюра не распознана! Внесите другую!");
                     continue;
                 }
                 else
@@ -67,7 +67,7 @@ internal class Program
 
                 if (currentSum >= productPrices[selectedIndex])
                 {
-                    Console.WriteLine($"Заберите {productNames[selectedIndex]}");
+                    Console.WriteLine($"\nЗаберите {productNames[selectedIndex]}");
 
                     decimal change = currentSum - productPrices[selectedIndex];
 
