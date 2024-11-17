@@ -11,6 +11,21 @@
         {
             Name = "Вода Черноголовка",
             Price = 80
+        },
+        new Product()
+        {
+            Name = "Сок Добрый",
+            Price = 120
+        },
+        new Product()
+        {
+            Name = "Чипсы Русская Картошка",
+            Price = 100
+        },
+        new Product()
+        {
+            Name = "Печенье Овсяное",
+            Price = 60
         }
     ];
     
@@ -31,7 +46,7 @@
                 continue;
             }
 
-            Console.WriteLine($"\nВы выбрали {productNames[selectedIndex]} \nЦена: {productPrices[selectedIndex]} ");
+            Console.WriteLine($"\nВы выбрали {_products[selectedIndex].Name} \nЦена: {_products[selectedIndex].Price} ");
 
             List<decimal> allowedBanknotes = new List<decimal>() { 5, 10, 50, 100, 500 };
 
@@ -69,11 +84,11 @@
                     Console.WriteLine($"\nТекущая сумма: {currentSum}");
                 }
 
-                if (currentSum >= productPrices[selectedIndex])
+                if (currentSum >= _products[selectedIndex].Price)
                 {
-                    Console.WriteLine($"\nЗаберите {productNames[selectedIndex]}");
+                    Console.WriteLine($"\nЗаберите {_products[selectedIndex].Name}");
 
-                    decimal change = currentSum - productPrices[selectedIndex];
+                    decimal change = currentSum - _products[selectedIndex].Price;
 
                     if (change > 0)
                     {
