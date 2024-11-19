@@ -1,52 +1,64 @@
 ﻿public class VendingMachine
 {
-    private readonly Product[] _products =
-    [
+    private readonly List<Product> products = new List<Product>()
+    {
         new Product()
         {
             Name = "Добрый Кола",
-            Price = 100
+            Price = 100,
+            Quantity = 2
         },
         new Product()
         {
             Name = "Вода Черноголовка",
-            Price = 80
+            Price = 80,
+            Quantity = 2
         },
         new Product()
         {
             Name = "Сок Добрый",
-            Price = 120
+            Price = 120,
+            Quantity = 2
         },
         new Product()
         {
             Name = "Чипсы Русская Картошка",
-            Price = 100
+            Price = 100,
+            Quantity = 2
+
         },
         new Product()
         {
             Name = "Печенье Овсяное",
-            Price = 60
+            Price = 60,
+            Quantity = 5
         }
-    ];
+    };
     
     public void Run()
     {
         while (true)
         {
-            for (int i = 0; i < _products.Length; i++)
+            for (int i = 0; i < products.Count; i++)
             {
-                Console.WriteLine($"{i + 1}. {_products[i].Name} - {_products[i].Price}");
+                Console.WriteLine($"{i + 1}. {products[i].Name} - {products[i].Price} рублей \nДоступно: {products[i].Quantity} шт");
             }
 
             int selectedIndex = ReadFromConsole("\nВыберите товар: ") - 1;
 
-            if (selectedIndex < 0 || selectedIndex > _products.Length - 1)
+            if (selectedIndex < 0 || selectedIndex > products.Count - 1)
             {
                 Console.WriteLine("Некорректный выбор! Попробуйте снова!");
                 continue;
             }
+            
+            if (products[selectedIndex].Quantity == 0)
+            {
+                Console.WriteLine("Товар закончился! Выберите другой!");
+                continue;
+            }
 
-            Console.WriteLine($"\nВы выбрали {_products[selectedIndex].Name} \nЦена: {_products[selectedIndex].Price} ");
+            Console.WriteLine($"\nВы выбрали {products[selectedIndex].Name} \nЦена: {products[selectedIndex].Price} ");
 
             List<decimal> allowedBanknotes = new List<decimal>() { 5, 10, 50, 100, 500 };
 
@@ -84,11 +96,13 @@
                     Console.WriteLine($"\nТекущая сумма: {currentSum}");
                 }
 
-                if (currentSum >= _products[selectedIndex].Price)
+                if (currentSum >= products[selectedIndex].Price)
                 {
-                    Console.WriteLine($"\nЗаберите {_products[selectedIndex].Name}");
+                    products[selectedIndex].Quantity--;
 
-                    decimal change = currentSum - _products[selectedIndex].Price;
+                    Console.WriteLine($"\nЗаберите {products[selectedIndex].Name}");
+
+                    decimal change = currentSum - products[selectedIndex].Price;
 
                     if (change > 0)
                     {
