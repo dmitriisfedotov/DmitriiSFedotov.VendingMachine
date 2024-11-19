@@ -6,25 +6,25 @@
         {
             Name = "Добрый Кола",
             Price = 100,
-            Quantity = 2
+            Quantity = 5
         },
         new Product()
         {
             Name = "Вода Черноголовка",
             Price = 80,
-            Quantity = 2
+            Quantity = 5
         },
         new Product()
         {
             Name = "Сок Добрый",
             Price = 120,
-            Quantity = 2
+            Quantity = 5
         },
         new Product()
         {
             Name = "Чипсы Русская Картошка",
             Price = 100,
-            Quantity = 2
+            Quantity = 5
 
         },
         new Product()
@@ -66,7 +66,6 @@
 
             while (true)
             {
-
                 Console.WriteLine("\nАвтомат принимает купюры номиналом: ");
 
                 for (int i = 0; i < allowedBanknotes.Count; i++)
