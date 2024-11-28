@@ -51,12 +51,6 @@
                 Console.WriteLine("Некорректный выбор! Попробуйте снова!");
                 continue;
             }
-            
-            if (products[selectedIndex].Quantity == 0)
-            {
-                Console.WriteLine("Товар закончился! Выберите другой!");
-                continue;
-            }
 
             Console.WriteLine($"\nВы выбрали {products[selectedIndex].Name} \nЦена: {products[selectedIndex].Price} ");
 
@@ -102,6 +96,11 @@
                     Console.WriteLine($"\nЗаберите {products[selectedIndex].Name}");
 
                     decimal change = currentSum - products[selectedIndex].Price;
+
+                    if (products[selectedIndex].Quantity == 0)
+                    {
+                        products.RemoveAt(selectedIndex);
+                    }
 
                     if (change > 0)
                     {
